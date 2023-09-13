@@ -33,7 +33,7 @@ export default function Home() {
         className="flex flex-col items-center max-w-sm"
         onSubmit={handleSubmit}
       >
-        <label>
+        <label className="w-full p-3">
           Name:
           <input
             type="text"
@@ -44,7 +44,7 @@ export default function Home() {
             onChange={handleNameChange}
           />
         </label>
-        <label>
+        <label className="w-full p-3">
           Host:
           <select
             value={selectedValue}
@@ -56,7 +56,7 @@ export default function Home() {
             <option value="option3">Option 3</option>
           </select>
         </label>
-        <label>
+        <label className="w-full p-3">
           Reason for Visit
           <input
             name="reason"
