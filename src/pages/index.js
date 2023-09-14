@@ -7,9 +7,9 @@ export default function Home() {
   const [reasonForVisit, setReasonForVisit] = useState("");
 
   function handleNameChange(e) {
-    Object.keys(e).forEach((element) => {
-      console.log(element);
-    });
+    // Object.keys(e).forEach((element) => {
+    //   console.log(element);
+    // });
 
     if (e.target.name == "visitor") {
       setName(e.target.value);
@@ -25,6 +25,7 @@ export default function Home() {
   function handleSubmit(e) {
     e.preventDefault();
     setServerInfo([name, selectedValue, reasonForVisit]);
+    console.log(serverInfo);
   }
 
   return (
