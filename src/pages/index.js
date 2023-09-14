@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 
 export default function Home() {
@@ -25,7 +26,13 @@ export default function Home() {
   function handleSubmit(e) {
     e.preventDefault();
     setServerInfo([name, selectedValue, reasonForVisit]);
-    console.log(serverInfo);
+    let data = serverInfo;
+    axios
+      .post("/api", data)
+      .then((response) => console.log(response))
+      .catch((e) => {
+        console.log(e);
+      });
   }
 
   return (
