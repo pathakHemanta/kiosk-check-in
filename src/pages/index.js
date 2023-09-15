@@ -1,17 +1,16 @@
-import axios from "axios";
 import { useState } from "react";
 
 export default function Home() {
   const [name, setName] = useState("None");
-  const [serverInfo, setServerInfo] = useState([]);
+  const [serverInfo, setServerInfo] = useState({
+    namd: "",
+    host: "",
+    reason: "",
+  });
   const [selectedValue, setSelectedValue] = useState("");
   const [reasonForVisit, setReasonForVisit] = useState("");
 
   function handleNameChange(e) {
-    // Object.keys(e).forEach((element) => {
-    //   console.log(element);
-    // });
-
     if (e.target.name == "visitor") {
       setName(e.target.value);
     } else if (e.target.name == "reason") {
@@ -23,16 +22,26 @@ export default function Home() {
     setSelectedValue(e.target.value);
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    setServerInfo([name, selectedValue, reasonForVisit]);
-    let data = serverInfo;
-    axios
-      .post("/api", data)
-      .then((response) => console.log(response))
-      .catch((e) => {
-        console.log(e);
+    setServerInfo({ name: name, host: selectedValue, reason: reasonForVisit });
+
+    try {
+      const response = await fetch("/api/save-data", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(serverInfo),
       });
+      if (response.ok) {
+        console.log("Data saved successfully!");
+      } else {
+        console.error("Data save failed!");
+      }
+    } catch (error) {
+      console.error("An error occured: ", error);
+    }
   }
 
   return (
@@ -81,9 +90,9 @@ export default function Home() {
       </form>
       <div className="bg-yellow-300 rounded-md p-auto mt-80">
         <ul>
-          {serverInfo.map((element) => (
+          {/* {serverInfo.map((element) => (
             <li key={serverInfo.indexOf(element)}>{element}</li>
-          ))}
+          ))} */}
         </ul>
       </div>
     </div>

@@ -1,21 +1,25 @@
-import serverlessMysql from "serverless-mysql";
+const mysql = require("mysql2");
 
-const db = serverlessMysql({
+const db = mysql.createConnection({
   config: {
-    host: process.env.MYSQL_HOST,
-    port: process.env.MYSQL_PORT,
-    database: process.env.MYSQL_DATABASE,
-    user: process.env.MYSQL_USER,
-    password: process.env.MYSQL_PASSWORD,
+    // host: process.env.MYSQL_HOST,
+    // port: process.env.MYSQL_PORT,
+    // database: process.env.MYSQL_DATABASE,
+    // user: process.env.MYSQL_USER,
+    // password: process.env.MYSQL_PASSWORD,
+    host: "localhost",
+    user: "root",
+    password: "Kaisenjujutsu@101010",
+    database: "guests",
   },
 });
 
-export default async function executeQuery({ query, values }) {
-  try {
-    const results = await db.query(query, values);
-    await db.end();
-    return results;
-  } catch (error) {
-    return { error };
+db.connect((err) => {
+  if (err) {
+    console.error("Error connecting to MySQL: ", err);
+    return;
   }
-}
+  console.log("Connected to MySQL database");
+});
+
+module.exports = db;
