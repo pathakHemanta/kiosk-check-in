@@ -7,6 +7,7 @@ export default function Home() {
     host: "",
     reason: "",
   });
+
   const [selectedValue, setSelectedValue] = useState("");
   const [reasonForVisit, setReasonForVisit] = useState("");
 
@@ -23,7 +24,7 @@ export default function Home() {
   }
 
   async function handleSubmit(e) {
-    e.preventDefault();
+    // e.preventDefault();
     setServerInfo({ name: name, host: selectedValue, reason: reasonForVisit });
 
     try {
