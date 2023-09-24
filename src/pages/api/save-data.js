@@ -13,6 +13,8 @@ export default async function handler(req, res) {
     const host = req.body.host;
     const reason = req.body.reason;
 
+    console.log(name + " " + host + " " + reason);
+
     const query =
       "INSERT INTO guest_list(host_name, reason_visit, guest_name) VALUES (?, ?, ?)";
     const values = [host, reason, name];

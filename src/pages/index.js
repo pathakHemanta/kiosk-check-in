@@ -1,9 +1,10 @@
 import { useState } from "react";
+import axios from "axios";
 
 export default function Home() {
   const [name, setName] = useState("None");
   const [serverInfo, setServerInfo] = useState({
-    namd: "",
+    name: "",
     host: "",
     reason: "",
   });
@@ -23,18 +24,24 @@ export default function Home() {
     setSelectedValue(e.target.value);
   }
 
-  async function handleSubmit(e) {
-    // e.preventDefault();
+  function handleSubmit(e) {
+    //e.preventDefault();
     setServerInfo({ name: name, host: selectedValue, reason: reasonForVisit });
 
+    console.log(JSON.stringify(serverInfo));
+
     try {
-      const response = await fetch("/api/save-data", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(serverInfo),
-      });
+      const response = axios.post(
+        "/api/save-data",
+        serverInfo
+        // {
+        // method: "POST",
+        // headers: {
+        //   "Content-Type": "application/json",
+        // },
+        // body: JSON.stringify(serverInfo),
+        // }
+      );
       if (response.ok) {
         console.log("Data saved successfully!");
       } else {
