@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import FormComponent from "@/components/visitorForm";
 
 export default function Home() {
   const [name, setName] = useState("None");
@@ -103,6 +104,7 @@ export default function Home() {
           ))} */}
         </ul>
       </div>
+      <FormComponent />
     </div>
   );
 }
