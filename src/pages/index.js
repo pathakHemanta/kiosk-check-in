@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import FormComponent from "@/components/visitorForm";
+import FormComponent from "@/components/VisitorForm";
 
 export default function Home() {
   const [name, setName] = useState("None");
