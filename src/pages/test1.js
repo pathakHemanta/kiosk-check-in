@@ -22,9 +22,9 @@ const Test = () => {
   });
 
   return (
-    <div className="h-screen flex flex-col w-full bg-lime-500">
-      <form className="flex flex-col bg-blue-300 my-auto w-full p-3">
-        <section className="mx-auto w-[60%] max-w-lg">
+    <div className="h-screen flex flex-col items-center w-full bg-lime-500">
+      <form className="flex flex-col bg-blue-300 my-auto w-auto p-3">
+        <section className="mx-auto max-w-lg">
           <label htmlFor="first-name" className="label">
             First Name:
           </label>
@@ -59,7 +59,7 @@ const Test = () => {
           </label>
           <textarea id="reason" className="input w-full pt-3"></textarea>
         </section>
-        <div className="flex flex-col border-b-2 border-white mx-auto w-[60%] max-w-lg">
+        <div className="flex flex-col border-b-2 border-white mx-auto max-w-lg">
           <label htmlFor="pic" className="">
             Submit an image:{" "}
           </label>
@@ -67,14 +67,10 @@ const Test = () => {
         </div>
         <button
           type="submit"
-          className="w-[60%] bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mx-auto mt-1 max-w-lg"
+          className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mx-auto mt-1 max-w-lg"
         >
           Submit
         </button>
-        <span className="relative flex h-3 w-3">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
-          <span className="relative inline-flex rounded-full h-3 w-3 bg-sky-500"></span>
-        </span>
       </form>
       <footer className="bg-pink-700">this is the footer</footer>
     </div>
