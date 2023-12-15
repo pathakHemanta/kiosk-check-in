@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { FaPauseCircle } from "react-icons/fa";
+import { MdPauseCircleOutline } from "react-icons/md";
 
 const Test = () => {
   const regularObject = { key: "value", number: 42 };
@@ -24,7 +26,7 @@ const Test = () => {
   return (
     <div className="h-screen flex flex-col items-center w-full bg-lime-500">
       <form className="flex flex-col bg-blue-300 my-auto w-auto p-3">
-        <section className="mx-auto max-w-lg">
+        <section className="">
           <label htmlFor="first-name" className="label">
             First Name:
           </label>
@@ -72,7 +74,16 @@ const Test = () => {
           Submit
         </button>
       </form>
-      <footer className="bg-pink-700">this is the footer</footer>
+      <footer className="">
+        {/* this is the footer
+        <span className="text">
+          <FaPauseCircle className="rounded-full bg-black" />
+        </span> */}
+        <div className="absolute left-0">
+          <span className="">hello</span>
+          <span>world</span>
+        </div>
+      </footer>
     </div>
   );
 };
