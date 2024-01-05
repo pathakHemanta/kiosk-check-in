@@ -25,7 +25,7 @@ const Test = () => {
 
   return (
     <div className="h-screen flex flex-col items-center w-full bg-lime-500">
-      <form className="flex flex-col bg-blue-300 my-auto w-auto p-3">
+      <form className="flex flex-col bg-blue-300 my-auto w-[50%] p-3">
         <section className="">
           <label htmlFor="first-name" className="label">
             First Name:
